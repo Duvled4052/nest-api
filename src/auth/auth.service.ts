@@ -11,6 +11,7 @@ export class AuthService {
         const user = await this.usersService.findByEmail(email);
         if (user?.password !== pass) {
             throw new UnauthorizedException();
+            // return {message: 'Email ou senha incorretos'}
         }
         const payload = {sub: user.id, name: user.name}
         return {
